@@ -3,6 +3,8 @@
 	import book_cover from "$assets/book_cover.png"
 	import phone_cover from "$assets/phone_cover.png"
 	import { Button } from '$components';
+
+	let {children} = $props()
 </script>
 
 <section class="hero">
@@ -14,13 +16,18 @@
 		<img class="phone-cover" src={phone_cover} alt="phone cover" />
 	</div>
 	<div class="hero-text white text-center">
-		<h1>THIS EBOOK WILL</h1>
-		<h1>SAVE YOU MONEY</h1>
-		<h1 class="mb-m" >TIME & NERVES</h1>
-		<p class="light-grey mb-l">
-			I moved to Spain seven years ago. bla bla bla
-		</p>
-		<Button onclick="{() => console.log("I was clicked on the hero sction")}">Purchase e-book for 10$</Button>
+		{#if children}
+			{@render children()}
+			{:else }
+
+				<h1>THIS EBOOK WILL</h1>
+				<h1>SAVE YOU MONEY</h1>
+				<h1 class="mb-m" >TIME & NERVES</h1>
+				<p class="light-grey mb-l">
+					I moved to Spain seven years ago. bla bla bla
+				</p>
+				<Button onclick="{() => console.log("I was clicked on the hero sction")}">Purchase e-book for 10$</Button>
+			{/if}
 	</div>
 </section>
 
